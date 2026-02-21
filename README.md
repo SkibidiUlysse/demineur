@@ -1,46 +1,94 @@
-# 💣 Demineur
+<p align="center">
+  <h1 align="center">💣 Demineur</h1>
+  <p align="center"><strong>The classic minesweeper, built from scratch with Pygame.</strong></p>
+</p>
 
-**Le classique du deminage, revisite avec Pygame.**
+<p align="center">
+  <img src="https://img.shields.io/badge/Python-3776AB?style=for-the-badge&logo=python&logoColor=white" />
+  <img src="https://img.shields.io/badge/Pygame-00C853?style=for-the-badge&logo=python&logoColor=white" />
+  <img src="https://img.shields.io/badge/Genre-Puzzle-9C27B0?style=for-the-badge" />
+</p>
 
-> Clic gauche pour reveler. Clic droit pour flagger. Ne saute pas.
-
-![Python](https://img.shields.io/badge/Python-3776AB?style=flat&logo=python&logoColor=white)
-![Pygame](https://img.shields.io/badge/Pygame-green?style=flat&logo=python&logoColor=white)
+<p align="center"><em>Left click to reveal. Right click to flag. Don't blow up.</em></p>
 
 ---
 
-## Fonctionnalites
+## How It Works
 
-- **Grille 8x8** avec mines aleatoires
-- **Revelation recursive** — clic sur une case vide revele automatiquement les cases adjacentes
-- **Drapeaux** — clic droit pour marquer les mines suspectees
-- **Compteur de mines** — affichage du nombre de mines autour de chaque case
-- **Detection de victoire** — le jeu detecte quand toutes les cases sures sont revelees
-- **Game over visuel** — les mines se revelent en rouge a la defaite
+```
+┌───────────────────────────────────────┐
+│           GAME LOOP                   │
+│                                       │
+│   Init 8×8 grid                       │
+│   Place mines randomly                │
+│   Compute neighbor counts             │
+│         │                             │
+│         ▼                             │
+│   ┌─────────────┐                     │
+│   │  Wait for   │◀──────────────┐     │
+│   │  player     │               │     │
+│   │  input      │               │     │
+│   └──────┬──────┘               │     │
+│          │                      │     │
+│     ┌────┴────┐                 │     │
+│     ▼         ▼                 │     │
+│  Left      Right                │     │
+│  Click     Click                │     │
+│     │         │                 │     │
+│     ▼         ▼                 │     │
+│  Reveal    Toggle               │     │
+│  cell      flag                 │     │
+│     │                           │     │
+│  ┌──┴──┐                        │     │
+│  ▼     ▼                        │     │
+│ Mine? Empty?                    │     │
+│  │     │                        │     │
+│  ▼     ▼                        │     │
+│ BOOM  Flood-fill ───────────────┘     │
+│  💀   reveal                          │
+│       neighbors                       │
+│                                       │
+│   All safe cells revealed? → 🏆 WIN  │
+└───────────────────────────────────────┘
+```
 
-## Lancement
+## Features
+
+| Feature | Description |
+|---------|-------------|
+| **8×8 grid** | Classic board with randomly placed mines |
+| **Recursive reveal** | Click an empty cell → auto-reveals all connected safe cells |
+| **Flag system** | Right-click to mark suspected mines |
+| **Neighbor count** | Numbers 1-8 show how many adjacent mines |
+| **Win detection** | Game detects when all safe cells are uncovered |
+| **Game over** | Mines revealed in red on explosion |
+
+## Quick Start
 
 ```bash
-# Pre-requis
-pip install pygame
+git clone https://github.com/SkibidiUlysse/demineur.git
+cd demineur
 
-# Jouer
+pip install pygame
 python demineur.py
 ```
 
-## Controles
+## Controls
 
 | Action | Input |
 |--------|-------|
-| Reveler une case | Clic gauche |
-| Poser/retirer un drapeau | Clic droit |
+| Reveal a cell | Left click |
+| Place / remove flag | Right click |
 
-## Stack technique
+## Roadmap
 
-- **Python 3** + **Pygame** pour le rendu graphique
-- Grille generee aleatoirement a chaque partie
-- Algorithme de flood-fill pour la revelation en cascade
+- [ ] **Difficulty selector** — Easy (8×8), Medium (16×16), Hard (24×24)
+- [ ] **Timer & best times** — track personal records per difficulty
+- [ ] **First-click safety** — guarantee first click is never a mine
+- [ ] **Custom themes** — dark mode, retro, neon
+- [ ] **Animations** — smooth reveal transitions, explosion particles
+- [ ] **Sound effects** — click, flag, explosion audio feedback
 
 ---
 
-*Un classique. Simple. Addictif. Explosif.*
+<p align="center"><em>Simple. Addictive. Explosive.</em></p>
